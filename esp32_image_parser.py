@@ -1,4 +1,40 @@
 import sys
+import os
+import argparse
+
+print("Script starting...")  # Basic startup message
+
+
+def main():
+    print("Entering main function...")  # Debug point 1
+
+    try:
+        parser = argparse.ArgumentParser(description='ESP32 Debug Parser')
+        parser.add_argument('action', choices=['test'], help='Action to take')
+        parser.add_argument('input', help='Input file')
+
+        print("Parser created...")  # Debug point 2
+
+        args = parser.parse_args()
+
+        print(f"Arguments parsed: {args}")  # Debug point 3
+        print(f"Python version: {sys.version}")  # Show Python version
+        print(
+            f"Script location: {os.path.abspath(__file__)}")  # Show script location
+
+    except Exception as e:
+        print(f"Error occurred: {str(e)}")
+        raise  # Re-raise the exception to see the full traceback
+
+
+if __name__ == "__main__":
+    print("Starting script execution...")  # Debug point 4
+    main()
+    print("Script completed.")  # Debug point 5
+
+
+'''
+import sys
 import json
 import os
 import argparse
@@ -421,3 +457,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+'''
